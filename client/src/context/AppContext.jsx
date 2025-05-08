@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import humanizeDuration from "humanize-duration";
 import {useAuth, useUser} from '@clerk/clerk-react';
 import axios from 'axios'
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
+
 
 export const AppContext = createContext()
 
@@ -41,7 +42,7 @@ export const AppContextProvider = (props) => {
 
     // Fetch Userdata
     const fetchUserData = async ()=>{
-        if(user.publicMetadata.role === 'educator'){
+        if(user?.publicMetadata?.role === 'educator'){
             setIsEducator(true)
         }
         try {
@@ -103,8 +104,8 @@ export const AppContextProvider = (props) => {
     // Fetch User Enrolled Courses
     const fetchUserEnrolledCourses = async ()=> {
         try {
-        const token =await getToken();
-        const {data} =await axios.get(backendUrl + '/api/user/enrolled-courses',{headers:{Authorization:`Bearer ${token}`}})
+        const token = await getToken();
+        const {data} = await axios.get(backendUrl + '/api/user/enrolled-courses', {headers: { Authorization:`Bearer ${token}`}})
         if(data.success){
             setEnrolledCourses(data.enrolledCourses.reverse())
         }else{
@@ -114,7 +115,7 @@ export const AppContextProvider = (props) => {
             toast.error(error.message)
             
     }
-    }
+}
 
     useEffect(()=>{
         fetchAllCourses()
