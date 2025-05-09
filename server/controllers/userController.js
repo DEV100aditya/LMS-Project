@@ -79,10 +79,10 @@ export const purchaseCourse = async (req, res)=> {
             }
         })
 
-        res.json({success: true, success_url: session.url})
+        res.json({success: true, session_url: session.url})
 
     } catch (error) {
-        res.json({success: true, message: error.message});
+        res.json({success: false, message: error.message});
     }
 }    
 
