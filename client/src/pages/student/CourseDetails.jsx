@@ -11,7 +11,7 @@ import { toast } from 'react-toastify'
 
 const CourseDetails = () => {
 
-  const { id } = useParams()
+  const {id} = useParams()
 
   const [courseData, setCourseData] = useState(null)
   const [openSections, setOpenSections] = useState({})
